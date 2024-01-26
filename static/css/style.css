@@ -1,0 +1,34 @@
+.main-input {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+body {
+  font-family: Arial, sans-serif; /* Use a modern font */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  background-color: #a59bc4; /* Use a light background color for contrast */
+  color: #333; /* Use a dark color for text for readability */
+  line-height: 1.6; /* Space out lines of text for readability */
+  font-size: 18px; /* Make the base font size larger for readability */
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+}
+
+/* p {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  font-size: 25px;
+  text-align: center;
+  color: white;
+} */
+
+.divider {
+  border-top: 1px solid black;
+  width: 70%;
+  justify-self: center;
+}

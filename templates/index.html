@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <title>My Weather app</title>
+  </head>
+  <body>
+    <div class="text-center">
+      <h1 class="mt-5">Weather app</h1>
+      <form action="/" method="post">
+        <div class="mb-3">
+          <div class="main-input">
+            <input
+              type="text"
+              class="form-control"
+              id="cityName"
+              name="cityName"
+              placeholder="Input city name"
+              required
+            />
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Find</button> <br />
+      </form>
+    </div>
+    {% if data %}
+    <div class="container">
+      <div class="text-center"></div>
+      <h2 class="mt-5">Current weather for: {{data.name}}, {{data.country}}</h2>
+      {{data.timestamp}} <br />
+      {{date_time[0]}} {{date_time[1]}} {{date_time[2]}}
+      <br />
+      {{data.main}}: {{ data.description }} <br />
+
+      <img
+        src="http://openweathermap.org/img/wn/{{data.icon}}@2x.png"
+        alt="Icon"
+      />
+      <br />
+
+      Temperature: {{data.temperature}} ºC <br />
+      Feels like: {{data.feels_like}} ºC <br />
+      Pressure: {{data.pressure}} hPa <br />
+      Humidity: {{data.humidity}} % <br />
+      Wind speed: {{data.wind_speed}} m/s <br />
+      {% endif %} {% if forecast_data %}
+      <div class="divider"></div>
+      <div class="text-center">
+        <h2>5-DAY FORECAST</h2>
+        Current forecast for: {{data.name}}, {{data.country}} <br />
+      </div>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-sm">
+            <img
+              class="weather-icon"
+              src="http://openweathermap.org/img/wn/{{forecast_data.icon_list[0]}}@2x.png"
+              alt="Icon"
+            />
+            <p>{{ forecast_data.temp_list[0] }}</p>
+          </div>
+          <div class="col-sm">
+            <img
+              class="weather-icon"
+              src="http://openweathermap.org/img/wn/{{forecast_data.icon_list[1]}}@2x.png"
+              alt="Icon"
+            />
+            <p>{{ forecast_data.temp_list[1] }}</p>
+          </div>
+          <div class="col-sm">
+            <img
+              class="weather-icon"
+              src="http://openweathermap.org/img/wn/{{forecast_data.icon_list[2]}}@2x.png"
+              alt="Icon"
+            />
+            <p>{{ forecast_data.temp_list[2] }}</p>
+          </div>
+          <div class="col-sm">
+            <img
+              class="weather-icon"
+              src="http://openweathermap.org/img/wn/{{forecast_data.icon_list[3]}}@2x.png"
+              alt="Icon"
+            />
+            <p>{{ forecast_data.temp_list[3] }}</p>
+          </div>
+          <div class="col-sm">
+            <img
+              class="weather-icon"
+              src="http://openweathermap.org/img/wn/{{forecast_data.icon_list[4]}}@2x.png"
+              alt="Icon"
+            />
+            <p>{{ forecast_data.temp_list[4] }}</p>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
